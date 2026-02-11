@@ -22,10 +22,17 @@ export function EventCard({ event }: { event: Event }) {
             backgroundColor: "var(--color-surface)"
         }}>
             {event.mainImage && (
-                <div style={{ height: "180px", overflow: "hidden", marginBottom: "var(--spacing-4)", borderRadius: "4px" }}>
+                <div style={{
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16/9",
+                    overflow: "hidden",
+                    marginBottom: "var(--spacing-4)",
+                    borderRadius: "4px"
+                }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                        src={urlFor(event.mainImage).width(400).height(250).url()}
+                        src={urlFor(event.mainImage).width(800).height(450).url()}
                         alt={event.title}
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
@@ -48,7 +55,9 @@ export function EventCard({ event }: { event: Event }) {
                 <div style={{ marginBottom: "var(--spacing-4)", maxHeight: "150px", overflow: "hidden" }}>
                     {event.description && <PortableText value={event.description} />}
                 </div>
-                <p style={{ fontWeight: "bold", marginBottom: "var(--spacing-4)" }}>{event.price === 0 ? "Free" : `₹${event.price}`}</p>
+                <p style={{ fontWeight: "bold", marginBottom: "var(--spacing-4)" }}>
+                    {event.price === 0 ? "Free" : (event.price ? `₹${event.price}` : "Price TBD")}
+                </p>
             </div>
             <Link href={`/events/${event.slug.current}`} className="btn btn-secondary" style={{ width: "100%" }}>
                 View Details

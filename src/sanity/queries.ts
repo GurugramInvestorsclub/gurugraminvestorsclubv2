@@ -53,7 +53,8 @@ export const getUpcomingEventsQuery = groq`
     mode,
     price,
     description,
-    featured
+    featured,
+    mainImage
   }
 `
 
@@ -65,7 +66,8 @@ export const getPastEventsQuery = groq`
     eventDate,
     mode,
     price,
-    description
+    description,
+    mainImage
   }
 `
 

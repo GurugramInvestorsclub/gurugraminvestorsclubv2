@@ -39,7 +39,7 @@ export interface Event {
     slug: { current: string };
     eventDate: string;
     mode: "Online" | "Offline";
-    price: number;
+    price?: number;
     description: SanityBody[];
     duration?: string;
     featured?: boolean;

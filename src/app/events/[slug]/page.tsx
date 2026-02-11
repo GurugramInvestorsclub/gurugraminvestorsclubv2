@@ -94,7 +94,7 @@ export default async function EventDetailPage(props: Props) {
                             <strong>Duration:</strong> {event.duration || "N/A"}
                         </div>
                         <div>
-                            <strong>Price:</strong> {event.price === 0 ? "Free" : `₹${event.price}`}
+                            <strong>Price:</strong> {event.price === 0 ? "Free" : (event.price ? `₹${event.price}` : "Price TBD")}
                         </div>
                     </div>
 

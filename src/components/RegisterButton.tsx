@@ -4,12 +4,14 @@ import { sendGAEvent } from "@next/third-parties/google";
 
 interface Props {
     link: string;
-    price: number;
+    price?: number;
 }
 
 export function RegisterButton({ link, price }: Props) {
     const handleClick = () => {
-        sendGAEvent({ event: "event_registration_click", value: price });
+        if (price) {
+            sendGAEvent({ event: "event_registration_click", value: price });
+        }
     };
 
     return (
@@ -21,7 +23,7 @@ export function RegisterButton({ link, price }: Props) {
             className="btn btn-primary"
             style={{ display: "inline-block", width: "100%", textAlign: "center", padding: "var(--spacing-3)" }}
         >
-            Register Now {price > 0 ? `(₹${price})` : "(Free)"}
+            Register Now {price === 0 ? "(Free)" : (price ? `(₹${price})` : "")}
         </a>
     );
 }

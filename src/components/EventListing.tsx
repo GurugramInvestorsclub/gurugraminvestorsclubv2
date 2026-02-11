@@ -45,7 +45,11 @@ export function EventListing({ upcomingEvents, pastEvents }: Props) {
                 </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                gap: "var(--spacing-8)"
+            }}>
                 {activeTab === "upcoming" && upcomingEvents.map(event => (
                     <EventCard key={event._id} event={event} />
                 ))}
